@@ -11,7 +11,7 @@ export default{
             <li>Title: {{ movie.title }}</li>
             <li>Original title: {{ movie.original_title }}</li>
             <li>Language: {{ movie.original_language }}</li>
-            <li>vote: {{ movie.vote }}</li>
+            <li>vote: {{ movie.vote_average }}</li>
         </ul>
     </div>
 </template>
