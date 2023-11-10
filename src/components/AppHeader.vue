@@ -15,16 +15,22 @@ export default {
 </script>
 
 <template>
-    <div class="container">
-        <div class="search-bar">
-            <input type="text" v-model="store.stringSearched">
-            <button @click="callSearch">Search</button>
+    <header>
+        <div class="container">
+            <div class="search-bar">
+                <input type="text" v-model="store.stringSearched">
+                <button @click="callSearch">Search</button>
+            </div>
         </div>
-    </div>
+    </header>
 </template>
 
 <style lang="scss" scoped>
+header {
+    padding: 30px 0;
     .search-bar {
         display: flex;
     }
+}
+    
 </style>

@@ -13,12 +13,15 @@ export default {
 
 <template>
 <div class="container" v-show="store.moviesArray.length > 0">
-    <div class="row">
-        <div class="col-4" v-for="movie in store.moviesArray">
-            <AppCard :movie="movie" />
-        </div>
+    <div class="row card-container">
+        <AppCard :movie="movie" v-for="movie in store.moviesArray" />
     </div>
 </div>
 </template>
 
-<style lang="scss"></style>
+<style lang="scss">
+.card-container {
+    gap: 20px;
+    justify-content: space-between;
+}
+</style>
