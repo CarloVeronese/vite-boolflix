@@ -19,6 +19,7 @@ export default{
 </script>
 <template>
     <div class="card">
+        <h2 class="card-title">MOVIE</h2>
         <ul class="card-info">
             <li>Title: {{ movie.title }}</li>
             <li>Original title: {{ movie.original_title }}</li>
@@ -31,27 +32,7 @@ export default{
         </ul>
     </div>
 </template>
+
 <style lang="scss" scoped>
-.card {
-    flex-basis: 200px;
-    border: 1px solid black;
-    border-radius: 20px;
-    display: flex;
-    .card-info {
-        padding: 20px 10px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 16px;
-        .language {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            .language-img {
-                width: 15px;
-            }
-        }
-    }
-}
 
 </style>

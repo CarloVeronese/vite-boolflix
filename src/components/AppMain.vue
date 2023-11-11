@@ -1,20 +1,31 @@
 <script>
 import { store } from '../store';
-import AppCard from './AppCard.vue';
+import AppCardMovies from './AppCardMovies.vue';
+import AppCardShows from './AppCardShows.vue';
 export default {
     data() {
         return {
             store: store,
         };
     },
-    components: { AppCard }
+    components: { 
+        AppCardMovies,
+        AppCardShows
+    }
 }
 </script>
 
 <template>
+<!-- MOVIES -->
 <div class="container" v-show="store.moviesArray.length > 0">
     <div class="row card-container">
-        <AppCard :movie="movie" v-for="movie in store.moviesArray" />
+        <AppCardMovies :movie="movie" v-for="movie in store.moviesArray" />
+    </div>
+</div>
+<!-- TV-SHOWS -->
+<div class="container" v-show="store.tvShowsArray.length > 0">
+    <div class="row card-container">
+        <AppCardShows :show="show" v-for="show in store.tvShowsArray" />
     </div>
 </div>
 </template>
