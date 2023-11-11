@@ -3,7 +3,8 @@ import { store } from '../store';
 export default{
     data() {
         return {
-            store: store
+            store: store,
+            stars: [['far', 'star'], ['fas', 'star']],
         }
     },
     props: {
@@ -19,9 +20,21 @@ export default{
             else return ''
         },
         scoreStars() {
-            return parseInt((this.movie.vote_average) / 2) + 1
+            return Math.ceil(parseInt((this.movie.vote_average) / 2))
+        },
+        scoreArray() {
+            const starsArray = []
+            for(let i = 0; i < 5; i++) {
+                if((i + 1) < this.scoreStars) {
+                    starsArray.push('fa-solid')
+                }
+                else {
+                    starsArray.push('fa-regular')
+                }
+            }
+            return starsArray;
         }
-    }
+    },
 }
 </script>
 <template>
@@ -35,8 +48,9 @@ export default{
                 <img :src="`${languageFlag}.png`" alt="" class="language-img">
                 <span v-show="languageFlag === 'unknown'">{{ movie.original_language }}</span>
             </li>
-            <li>vote: {{ movie.vote_average }}</li>
-            <li>stars: {{ scoreStars }}</li>
+            <li class="stars">
+                <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" />
+            </li>
         </ul>
         <img :src="posterPath" alt="">
     </div>

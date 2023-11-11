@@ -3,7 +3,8 @@ import { store } from '../store';
 export default{
     data() {
         return {
-            store: store
+            store: store,
+            stars: [['far', 'star'], ['fas', 'star']]
         }
     },
     props: {
@@ -11,7 +12,7 @@ export default{
     },
     computed: {
         languageFlag(){
-            if (this.store.langArray.filter((lang) => lang === this.show.original_language).length > 0) return this.show.original_language;
+            if (this.store.langArray.includes(this.show.original_language)) return this.show.original_language;
             else return 'unknown'
         },
         posterPath() {
@@ -19,7 +20,19 @@ export default{
             else return ''
         },
         scoreStars() {
-            return parseInt((this.show.vote_average) / 2) + 1
+            return Math.ceil(parseInt((this.show.vote_average) / 2))
+        },
+        scoreArray() {
+            const starsArray = []
+            for(let i = 0; i < 5; i++) {
+                if((i + 1) < this.scoreStars) {
+                    starsArray.push('fa-solid')
+                }
+                else {
+                    starsArray.push('fa-regular')
+                }
+            }
+            return starsArray;
         }
     }
 }
@@ -35,8 +48,9 @@ export default{
                 <img :src="`${languageFlag}.png`" alt="" class="language-img">
                 <span v-show="languageFlag === 'unknown'">{{ show.original_language }}</span>
             </li>
-            <li>vote: {{ show.vote_average }}</li>
-            <li>stars: {{ scoreStars }}</li>
+            <li class="stars">
+                <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" />
+            </li>
         </ul>
         <img :src="posterPath" alt="">
     </div>
