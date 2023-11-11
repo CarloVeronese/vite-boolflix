@@ -19,14 +19,17 @@ export default {
       axios.get(`https://api.themoviedb.org/3/search/movie?api_key=2e97dd65b2da08753e19493d18e36c44&query=${this.store.stringSearched}`)
       .then(res => {
         this.store.moviesArray = res.data.results;
-        console.log(store.moviesArray)
+        console.log('MOVIES: ',store.moviesArray)
       })
       // SEARCH TV-SHOWS
       axios.get(`https://api.themoviedb.org/3/search/tv?api_key=2e97dd65b2da08753e19493d18e36c44&&query=${this.store.stringSearched}`)
       .then(res => {
         this.store.tvShowsArray = res.data.results;
-        console.log(store.tvShowsArray)
+        console.log('TV-SHOWS: ',store.tvShowsArray)
       })
+      this.store.firstMovieIndex = 0;
+      this.store.firstShowIndex = 0;
+      this.store.cardsNum = 4;
     }
   },
 }

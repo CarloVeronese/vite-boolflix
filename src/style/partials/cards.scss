@@ -36,8 +36,11 @@
                 }
             }
         }
-        .star {
+        .stars {
             display: flex;
+            .star {
+                color: rgb(242, 242, 122);
+            }
         }
     }
     .poster {

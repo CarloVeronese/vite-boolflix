@@ -6,5 +6,8 @@ export const store = reactive(
         moviesArray: [],
         tvShowsArray: [],
         langArray: ['it','en','de','es','fr'],
+        firstMovieIndex: 0,
+        firstShowIndex: 0,
+        cardsNum: 4
     }
 )

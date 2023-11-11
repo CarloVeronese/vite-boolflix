@@ -4,7 +4,6 @@ export default{
     data() {
         return {
             store: store,
-            stars: [['far', 'star'], ['fas', 'star']],
         }
     },
     props: {
@@ -50,7 +49,7 @@ export default{
                     <span v-show="languageFlag === 'unknown'">{{ movie.original_language }}</span>
                 </li>
                 <li class="stars">
-                    <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" />
+                    <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" class="star"/>
                 </li>
             </ul>
         </div>
