@@ -17,6 +17,9 @@ export default{
         posterPath() {
             if(this.show.poster_path != null) return `https://image.tmdb.org/t/p/w154${this.show.poster_path}`
             else return ''
+        },
+        scoreStars() {
+            return parseInt((this.show.vote_average) / 2) + 1
         }
     }
 }
@@ -33,6 +36,7 @@ export default{
                 <span v-show="languageFlag === 'unknown'">{{ show.original_language }}</span>
             </li>
             <li>vote: {{ show.vote_average }}</li>
+            <li>stars: {{ scoreStars }}</li>
         </ul>
         <img :src="posterPath" alt="">
     </div>
