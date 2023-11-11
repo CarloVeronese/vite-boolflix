@@ -1,49 +1,59 @@
 .card {
+    cursor: pointer;
     position: relative;
     flex-basis: 342px;
     display: flex;
     height: 513px;
+
     &:hover {
         .poster {
-            display: none;
-        }
-        .card-content {
-            padding: 2px 10px;
-            flex-basis: 342px;
-            border-radius: 20px;
-            display: flex;
-            flex-direction: column;
+            opacity: 0.1;
         }
     }
+
     .card-content {
-        display: none;
-        border: 2px solid black;
+        padding: 2px 10px;
+        flex-basis: 342px;
+        border-radius: 20px;
+        display: flex;
+        flex-direction: column;
+        border: 2px solid red;
+
         .card-title {
             font-size: 15px;
         }
+
         .card-info {
             padding: 20px 0px;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
             gap: 16px;
+            .info-title {
+                font-weight: 800;
+            }
             .language {
                 display: flex;
                 align-items: center;
                 gap: 10px;
+
                 .language-img {
-                    width: 15px;
+                    width: 25px;
                 }
             }
         }
+
         .stars {
             display: flex;
+
             .star {
                 color: rgb(242, 242, 122);
             }
         }
     }
+
     .poster {
+        z-index: 2;
         position: absolute;
         right: 0;
         top: 0;
@@ -53,7 +63,9 @@
         height: 513px;
         width: 342px;
     }
+
     .unknown {
         object-fit: cover;
+        opacity: 0.5;
     }
 }

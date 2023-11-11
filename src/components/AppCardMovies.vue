@@ -39,18 +39,19 @@ export default{
 <template>
     <div class="card">
         <div class="card-content">
-            <h2 class="card-title">MOVIE</h2>
             <ul class="card-info">
-                <li>Title: {{ movie.title }}</li>
-                <li>Original title: {{ movie.original_title }}</li>
+                <li><span class="info-title">Title:</span> {{ movie.title }}</li>
+                <li><span class="info-title">Original title: </span> {{ movie.original_title }}</li>
                 <li class="language">
-                    <span>Language:</span>  
+                    <span class="info-title">Language:</span>  
                     <img :src="`${languageFlag}.png`" alt="" class="language-img">
                     <span v-show="languageFlag === 'unknown'">{{ movie.original_language }}</span>
                 </li>
                 <li class="stars">
+                    <span class="info-title">Score: </span>
                     <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" class="star"/>
                 </li>
+                <li><span class="info-title">Overview: </span>{{ movie.overview }}</li>
             </ul>
         </div>
         <img :src="posterPath" alt="" class="poster" :class=" posterPath === 'unknown.png' ? 'unknown' : ''">

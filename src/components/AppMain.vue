@@ -72,26 +72,35 @@ export default {
 </template>
 
 <style lang="scss">
-.card-container {
-    position: relative;
-    gap: 20px;
-    justify-content: space-between;
-    .scroll {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        background-color: grey;
-        padding: 5px;
-        border-radius: 50%;
-        z-index: 50;
-        aspect-ratio: 1 / 1;
-        cursor: pointer;
+main {
+    height: 100%;
+    background-color: #363636;
+    color: white;
+    h2 {
+        font-size: 18px;
     }
-    .scroll-left {
-        left: 10px;
-    }
-    .scroll-right {
-        right: 10px;
+    .card-container {
+        position: relative;
+        gap: 20px;
+        justify-content: space-between;
+        .scroll {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background-color: grey;
+            padding: 5px;
+            border-radius: 50%;
+            z-index: 50;
+            aspect-ratio: 1 / 1;
+            cursor: pointer;
+        }
+        .scroll-left {
+            left: -30px;
+        }
+        .scroll-right {
+            right: -30px;
+        }
     }
 }
+
 </style>
