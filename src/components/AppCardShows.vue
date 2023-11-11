@@ -13,6 +13,10 @@ export default{
         languageFlag(){
             if (this.store.langArray.filter((lang) => lang === this.show.original_language).length > 0) return this.show.original_language;
             else return 'unknown'
+        },
+        posterPath() {
+            if(this.show.poster_path != null) return `https://image.tmdb.org/t/p/w154${this.show.poster_path}`
+            else return ''
         }
     }
 }
@@ -30,6 +34,7 @@ export default{
             </li>
             <li>vote: {{ show.vote_average }}</li>
         </ul>
+        <img :src="posterPath" alt="">
     </div>
 </template>
 <style lang="scss" scoped>
