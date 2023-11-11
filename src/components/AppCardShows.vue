@@ -16,8 +16,8 @@ export default{
             else return 'unknown'
         },
         posterPath() {
-            if(this.show.poster_path != null) return `https://image.tmdb.org/t/p/w154${this.show.poster_path}`
-            else return ''
+            if(this.show.poster_path != null) return `https://image.tmdb.org/t/p/w342${this.show.poster_path}`
+            else return 'unknown.png'
         },
         scoreStars() {
             return Math.ceil(parseInt((this.show.vote_average) / 2))
@@ -39,22 +39,24 @@ export default{
 </script>
 <template>
     <div class="card">
-        <h2 class="card-title">TV-SHOW</h2>
-        <ul class="card-info">
-            <li>Title: {{ show.name }}</li>
-            <li>Original title: {{ show.original_name }}</li>
-            <li class="language">
-                <span>Language:</span>  
-                <img :src="`${languageFlag}.png`" alt="" class="language-img">
-                <span v-show="languageFlag === 'unknown'">{{ show.original_language }}</span>
-            </li>
-            <li class="stars">
-                <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" />
-            </li>
-        </ul>
-        <img :src="posterPath" alt="">
+        <div class="card-content">
+            <h2 class="card-title">TV-SHOW</h2>
+            <ul class="card-info">
+                <li>Title: {{ show.name }}</li>
+                <li>Original title: {{ show.original_name }}</li>
+                <li class="language">
+                    <span>Language:</span>  
+                    <img :src="`${languageFlag}.png`" alt="" class="language-img">
+                    <span v-show="languageFlag === 'unknown'">{{ show.original_language }}</span>
+                </li>
+                <li class="stars">
+                    <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" />
+                </li>
+            </ul>
+        </div>
+        <img :src="posterPath" alt="" class="poster" :class=" posterPath === 'unknown.png' ? 'unknown' : ''">
     </div>
 </template>
 <style lang="scss" scoped>
-
+@use '../style/partials/cards.scss' as *;
 </style>

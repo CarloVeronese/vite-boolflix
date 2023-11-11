@@ -16,18 +16,20 @@ export default {
 </script>
 
 <template>
+    <main>
 <!-- MOVIES -->
-<div class="container" v-show="store.moviesArray.length > 0">
-    <div class="row card-container">
-        <AppCardMovies :movie="movie" v-for="movie in store.moviesArray" />
-    </div>
-</div>
-<!-- TV-SHOWS -->
-<div class="container" v-show="store.tvShowsArray.length > 0">
-    <div class="row card-container">
-        <AppCardShows :show="show" v-for="show in store.tvShowsArray" />
-    </div>
-</div>
+        <div class="container" v-show="store.moviesArray.length > 0">
+            <div class="row card-container">
+                <AppCardMovies :movie="movie" v-for="movie in store.moviesArray" />
+            </div>
+        </div>
+        <!-- TV-SHOWS -->
+        <div class="container" v-show="store.tvShowsArray.length > 0">
+            <div class="row card-container">
+                <AppCardShows :show="show" v-for="show in store.tvShowsArray" />
+            </div>
+        </div>
+    </main>
 </template>
 
 <style lang="scss">

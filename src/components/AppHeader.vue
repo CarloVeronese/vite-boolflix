@@ -17,9 +17,12 @@ export default {
 <template>
     <header>
         <div class="container">
-            <div class="search-bar">
-                <input type="text" v-model="store.stringSearched">
-                <button @click="callSearch">Search</button>
+            <div class="nav-bar">
+                <h2 class="nav-bar-logo">BOOLFLIX</h2>
+                <div class="search-bar">
+                    <input type="text" v-model="store.stringSearched" placeholder="search">
+                    <button @click="callSearch">Search</button>
+                </div>
             </div>
         </div>
     </header>
@@ -28,8 +31,20 @@ export default {
 <style lang="scss" scoped>
 header {
     padding: 30px 0;
-    .search-bar {
+    background-color: black;
+    .nav-bar {
         display: flex;
+        justify-content: space-between;
+        .nav-bar-logo {
+            color: red;
+        }
+        .search-bar {
+            display: flex;
+            * {
+                border-radius: 5px;
+                padding: 0 5px;
+            }
+        }
     }
 }
     

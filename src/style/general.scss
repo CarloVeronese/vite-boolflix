@@ -5,7 +5,6 @@
 }
 
 img {
-    width: 100%;
     display: block;
 }
 
@@ -20,43 +19,17 @@ a {
 }
 
 .container {
-    max-width: 1280px;
+    max-width: 1428px;
     margin: 0 auto;
     padding: 10px 0;
 }
 
 .row { 
     display: flex;
-    flex-wrap: wrap;
+    flex-wrap: wrap ;
 }
 
-.card {
-    flex-basis: 200px;
-    border: 1px solid black;
-    border-radius: 20px;
-    display: flex;
-    flex-direction: column;
-    padding: 20px 10px;
-    .card-title {
-        font-size: 15px;
-    }
-    .card-info {
-        padding: 20px 0px;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-between;
-        gap: 16px;
-        .language {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            .language-img {
-                width: 15px;
-            }
-        }
-    }
-    .star {
-        display: flex;
-    }
+button {
+    cursor: pointer;
 }
 
