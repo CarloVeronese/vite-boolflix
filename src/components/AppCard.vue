@@ -1,18 +1,18 @@
 <script>
-import { createDOMCompilerError } from '@vue/compiler-dom';
-
+import { store } from '../store';
 export default{
+    data() {
+        return {
+            store: store
+        }
+    },
     props: {
-        movie: Object,
+        movie: Object
     },
     computed: {
         languageFlag(){
-            if (this.movie.original_language === 'it' ) return 'italy.png';
-            else if (this.movie.original_language === 'en' ) return 'uk.png';
-            else if (this.movie.original_language === 'de' ) return 'germany.png';
-            else if (this.movie.original_language === 'es' ) return 'spain.png';
-            else if (this.movie.original_language === 'fr' ) return 'france.webp';
-            else false
+            if (this.store.langArray.filter((lang) => lang === this.movie.original_language).length > 0) return this.movie.original_language;
+            else return 'unknown'
         }
     }
 }
@@ -24,8 +24,8 @@ export default{
             <li>Original title: {{ movie.original_title }}</li>
             <li class="language">
                 <span>Language:</span>  
-                <img :src="languageFlag" alt="" class="language-img" v-show="languageFlag">
-                <span v-show="!languageFlag">{{ movie.original_language }}</span>
+                <img :src="`${languageFlag}.png`" alt="" class="language-img">
+                <span v-show="languageFlag === 'unknown'">{{ movie.original_language }}</span>
             </li>
             <li>vote: {{ movie.vote_average }}</li>
         </ul>
