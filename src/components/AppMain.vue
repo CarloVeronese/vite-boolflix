@@ -1,7 +1,6 @@
 <script>
 import { store } from '../store';
-import AppCardMovies from './AppCardMovies.vue';
-import AppCardShows from './AppCardShows.vue';
+import AppCard from './AppCard.vue';
 export default {
     data() {
         return {
@@ -9,8 +8,7 @@ export default {
         };
     },
     components: { 
-        AppCardMovies,
-        AppCardShows
+        AppCard
     },
     methods: {
         scrollMovie(dir) {
@@ -44,7 +42,7 @@ export default {
             return (index >= this.store.firstShowIndex && index < this.store.firstShowIndex + this.store.cardsNum)
         }
 
-    },
+    }
 }
 </script>
 
@@ -55,7 +53,7 @@ export default {
             <h2>MOVIES</h2>
             <div class="row card-container">
                 <font-awesome-icon icon="fa-solid fa-chevron-left" class="scroll scroll-left" @click="scrollMovie('left')"/>
-                <AppCardMovies :movie="movie" v-for="(movie, movieIndex) in store.moviesArray" v-show="showMovieCard(movieIndex)"/>
+                <AppCard :element="movie" :type="'movie'" v-for="(movie, movieIndex) in store.moviesArray" v-show="showMovieCard(movieIndex)"/>
                 <font-awesome-icon icon="fa-solid fa-chevron-right" class="scroll scroll-right" @click="scrollMovie('right')"/>
             </div>
         </div>
@@ -64,7 +62,7 @@ export default {
             <h2>TV SHOWS</h2>
             <div class="row card-container">
                 <font-awesome-icon icon="fa-solid fa-chevron-left" class="scroll scroll-left" @click="scrollShow('left')"/>
-                <AppCardShows :show="show" v-for="(show, showIndex) in store.tvShowsArray" v-show="showShowCard(showIndex)"/>
+                <AppCard :element="show" :type="'show'" v-for="(show, showIndex) in store.tvShowsArray" v-show="showShowCard(showIndex)"/>
                 <font-awesome-icon icon="fa-solid fa-chevron-right" class="scroll scroll-right" @click="scrollShow('right')"/>
             </div>
         </div>
