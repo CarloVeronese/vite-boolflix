@@ -23,6 +23,10 @@ export default {
                     <input type="text" v-model="store.stringSearched" placeholder="search">
                     <button @click="callSearch">Search</button>
                 </div>
+                <select class="genre-dropdown" name="genre" id="" placeholder="" v-model="store.filterGenres">
+                    <option value="0">All</option>
+                    <option :value="genre.id" v-for="genre in store.genresArray">{{ genre.name }}</option>
+                </select>
             </div>
         </div>
     </header>
@@ -35,11 +39,17 @@ header {
     .nav-bar {
         display: flex;
         justify-content: space-between;
+        .genre-dropdown {
+            border-radius: 5px;
+        }
         .nav-bar-logo {
             color: red;
         }
         .search-bar {
+            flex-grow: 1;
+            justify-content: flex-end;
             display: flex;
+            padding: 0 20px;
             * {
                 border-radius: 5px;
                 padding: 0 5px;

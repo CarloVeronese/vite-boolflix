@@ -27,14 +27,15 @@ export default {
         this.store.tvShowsArray = res.data.results;
         console.log('TV-SHOWS: ',store.tvShowsArray)
       })
-      this.store.firstMovieIndex = 0;
-      this.store.firstShowIndex = 0;
-      this.store.cardsNum = 4;
     },
     fillGenres() {
       axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.store.API_KEY}`)
       .then(res =>{
-        store.genresArray = res.data.genres
+        this.store.genresArray = res.data.genres
+      })
+      axios.get(`https://api.themoviedb.org/3/genre/tv/list?api_key=${this.store.API_KEY}`)
+      .then(res =>{
+        this.store.genresArray = this.store.genresArray.concat(res.data.genres)
       })
     }
   },
