@@ -5,19 +5,30 @@ export default{
     data() {
         return {
             store: store,
+            castArray: []
         }
     },
     props: {
         element: Object,
         type: String
     },
+    methods: {
+        credits() {
+            axios.get(`https://api.themoviedb.org/3/movie/${this.element.id}/credits?api_key=${this.store.API_KEY}`)
+            .then(res => {
+                this.castArray = res.data.cast.splice(0,5);
+            })
+        },
+        getGenreFromId(genreId) {
+            for(let i = 0; i < this.store.genresArray.length; i++) {
+                if(this.store.genresArray[i].id === genreId) return this.store.genresArray[i].name
+            }
+        }
+    },
+    created() {
+        this.credits()
+    },
     computed: {
-        // credits() {
-        //     axios.get(`https://api.themoviedb.org/3/movie/${this.movie.id}/credits`)
-        //     .then(res => {
-        //         console.log('credits',res)
-        //     })
-        // },
         languageFlag(){
             if (this.store.langArray.includes(this.element.original_language)) return this.element.original_language;
             else return 'unknown';
@@ -45,7 +56,7 @@ export default{
 }
 </script>
 <template>
-    <div class="card">
+    <div class="card" @click="credits">
         <div class="card-content">
             <ul class="card-info">
                 <li><span class="info-title">Title:</span> 
@@ -63,6 +74,18 @@ export default{
                 <li class="stars">
                     <span class="info-title">Score: </span>
                     <font-awesome-icon v-for="star in scoreArray" :icon="`${star} fa-star`" class="star"/>
+                </li>
+                <li>
+                    <ul class="genres cast-list">
+                        <li>Genre: </li>
+                        <li v-for="(genreId, genreIndex) in element.genre_ids">{{ getGenreFromId(genreId) }}<span v-show="genreIndex < (element.genre_ids.length - 1)">, </span></li>
+                    </ul>
+                </li>
+                <li class="cast">
+                    <ul class="cast-list">
+                        <li class="info-title">Cast:</li>
+                        <li v-for="(actor, index) in castArray">{{ actor.name }}<span v-show="index < (castArray.length - 1)">, </span></li>
+                    </ul>
                 </li>
                 <li><span class="info-title">Overview: </span>{{ element.overview }}</li>
             </ul>

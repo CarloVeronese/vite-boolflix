@@ -30,7 +30,16 @@ export default {
       this.store.firstMovieIndex = 0;
       this.store.firstShowIndex = 0;
       this.store.cardsNum = 4;
+    },
+    fillGenres() {
+      axios.get(`https://api.themoviedb.org/3/genre/movie/list?api_key=${this.store.API_KEY}`)
+      .then(res =>{
+        store.genresArray = res.data.genres
+      })
     }
+  },
+  created() {
+    this.fillGenres()
   },
   computed: {
     movies() {

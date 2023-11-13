@@ -9,6 +9,7 @@ export const store = reactive(
         firstMovieIndex: 0,
         firstShowIndex: 0,
         cardsNum: 4,
-        API_KEY: '2e97dd65b2da08753e19493d18e36c44'
+        API_KEY: '2e97dd65b2da08753e19493d18e36c44',
+        genresArray: []
     }
 )

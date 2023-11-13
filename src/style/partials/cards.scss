@@ -50,6 +50,11 @@
                 color: rgb(242, 242, 122);
             }
         }
+        .cast-list {
+            display: flex;
+            gap: 2px;
+            flex-wrap: wrap;
+        }
     }
 
     .poster {
